@@ -22,7 +22,7 @@ export class TweetsComponent implements OnInit {
   currentTweetId=''
   currentUser=''
 
-  constructor(private tweetService: TweetService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private tweetService: TweetService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.currentUser = this.route.snapshot.params['loginId']

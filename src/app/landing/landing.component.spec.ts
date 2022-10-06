@@ -22,4 +22,11 @@ describe('LandingComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it(`should have as title 'tweet-app'`, () => {
+    const fixture = TestBed.createComponent(LandingComponent);
+    const app = fixture.componentInstance;
+    expect(app.title).toEqual('Tweetsgram');
+  });
+
 });

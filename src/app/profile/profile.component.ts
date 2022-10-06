@@ -18,7 +18,7 @@ export class ProfileComponent implements OnInit {
   updateTweetMessage: ''
   isUpdateTweet = 0;
 
-  constructor(private tweetService: TweetService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private tweetService: TweetService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.loginId = this.route.snapshot.params['loginId']
