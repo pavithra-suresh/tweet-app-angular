@@ -1,0 +1,29 @@
+<h1>Tweets</h1>
+
+<div class="container tweet">
+    <div *ngIf='noData' class="alert alert-warning">
+        <p>{{noData}}</p>
+    </div>
+    <ul class="list-group">
+        <li class="list-group-item" *ngFor="let tweet of tweets">
+            <small class="text-muted">{{tweet.postedTime | date : 'dd MMM yyyy, h:mm a'}}</small>
+            <p class="nm">@{{tweet.userId}}</p>  
+            <p class="nm">{{tweet.tweetMessage}}</p>  
+            <p *ngIf="tweet.likes!=0">{{tweet.likes}}</p>          
+            <button (click)="updateLikes(tweet.tweetId)"><i class="material-icons">Like </i></button> 
+            <button (click)="postComment(tweet.tweetId)"><i class="material-icons">Add Comment </i></button> 
+            <button (click)="viewComments(tweet.tweetId)"><i class="material-icons">View Comment </i></button>
+            
+            <div *ngIf="addComment != 0 && currentTweetId===tweet.tweetId" class="form-group">
+            <textarea class="form-control" rows="3" maxlength="144" placeholder="Reply To Tweet"
+                [(ngModel)]="messageInComment"></textarea>
+            <button class="btn btn-primary" (click)="addAComment(tweet.tweetId)">Reply to this tweet</button>
+            </div>
+        
+           <div *ngFor="let comment of comments">
+                <p *ngIf="noComments!=1 && viewComment != 0 && currentTweetId===tweet.tweetId">{{comment.userId}} : {{comment.commentMessage}}</p>
+            </div>
+            <p *ngIf="noComments===1 && viewComment != 0 && currentTweetId===tweet.tweetId">No Comments found</p>
+            </li>
+    </ul>
+</div>
